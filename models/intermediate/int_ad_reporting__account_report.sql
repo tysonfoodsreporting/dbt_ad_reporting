@@ -152,10 +152,10 @@ amazon_ads as (
                 'spend': 'cost',
                 'conversions': 'purchases_30_d',
                 'conversions_value': 'sales_30_d',
-                'video_25p_watched': 'null',
-                'video_50p_watched': 'null',
-                'video_75p_watched': 'null',
-                'video_complete_watched': 'null'
+                'video_25p_watched': 'cast(null as float64)',
+                'video_50p_watched': 'cast(null as float64)',
+                'video_75p_watched': 'cast(null as float64)',
+                'video_complete_watched': 'cast(null as float64)'
             },
         relation=ref('amazon_ads__account_report')
     ) }}
