@@ -14,12 +14,16 @@ with
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
                 'video_complete_watched': 'null',
-                'conversion_value': 'null'
+                'conversion_value': 'null',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             }
     ) }}
 ),
 {% endif %}
 {% endfor %}
+
 {% if 'google_ads' in enabled_packages %}
 google_ads as (
 
@@ -31,11 +35,15 @@ google_ads as (
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
                 'video_complete_watched': 'null',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             },
         relation=ref('google_ads__ad_report')
     ) }}
 ),
 {% endif %}
+
 {% if 'apple_search_ads' in enabled_packages %}
 apple_search_ads as (
 
@@ -47,7 +55,10 @@ apple_search_ads as (
                 'account_name': 'organization_name',
                 'clicks': 'taps',
                 'conversions': 'tap_installs',
-                'conversions_value': 'null'
+                'conversions_value': 'null',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             },
         relation=ref('apple_search_ads__ad_report')
     ) }}
@@ -67,7 +78,10 @@ facebook_ads as (
                 'video_complete_watched': 'video_p_100_watched',
                 'conversions_value': 'null',
                 'ad_group_id':'adset_id',
-                'ad_group_name': 'adset_name'
+                'ad_group_name': 'adset_name',
+                
+                'video_plays': 'video_plays',
+                'video_views': 'video_views'
             },
         relation=ref('facebook_ads__custom_summary_report')
     ) }}
@@ -89,7 +103,10 @@ linkedin_ads as (
                 'ad_name': 'null',
                 'spend': 'cost',
                 'conversions': 'total_conversions',
-                'conversions_value': 'conversion_value_in_local_currency'
+                'conversions_value': 'conversion_value_in_local_currency',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             },
         relation=ref('linkedin_ads__creative_report')
     ) }}
@@ -112,7 +129,10 @@ pinterest_ads as (
                 'video_25p_watched': 'video_total_25_p',
                 'video_50p_watched': 'video_total_50_p',
                 'video_75p_watched': 'video_total_75_p',
-                'video_complete_watched': 'video_total_100_p'
+                'video_complete_watched': 'video_total_100_p',
+                
+                'video_plays': 'video_plays',
+                'video_views': 'video_views'
             },
         relation=ref('pinterest_ads__pin_promotion_report')
     ) }}
@@ -138,7 +158,10 @@ snapchat_ads as (
                 'video_25p_watched': 'video_25p_watched',
                 'video_50p_watched': 'video_50p_watched',
                 'video_75p_watched': 'video_75p_watched',
-                'video_complete_watched': 'video_complete_watched'
+                'video_complete_watched': 'video_complete_watched',
+                
+                'video_plays': 'video_plays',
+                'video_views': 'video_views'
             },
         relation=ref('snapchat_ads__ad_report')
     ) }}
@@ -159,7 +182,10 @@ tiktok_ads as (
                 'video_25p_watched': 'video_views_p_25',
                 'video_50p_watched': 'video_views_p_50',
                 'video_75p_watched': 'video_views_p_75',
-                'video_complete_watched': 'video_views_p_100'
+                'video_complete_watched': 'video_views_p_100',
+                
+                'video_plays': 'video_plays',
+                'video_views': 'video_views'
             },
         relation=ref('tiktok_ads__ad_report')
     ) }}
@@ -178,7 +204,10 @@ twitter_ads as (
                 'ad_id': 'promoted_tweet_id',
                 'ad_name': 'tweet_name',
                 'conversions': 'total_conversions',
-                'conversions_value': 'total_conversions_sale_amount'
+                'conversions_value': 'total_conversions_sale_amount',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             },
         relation=ref('twitter_ads__promoted_tweet_report')
     ) }}
@@ -199,7 +228,10 @@ amazon_ads as (
                 'video_25p_watched': 'null',
                 'video_50p_watched': 'null',
                 'video_75p_watched': 'null',
-                'video_complete_watched': 'null'
+                'video_complete_watched': 'null',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             },
         relation=ref('amazon_ads__ad_report')
     ) }}
@@ -214,7 +246,10 @@ reddit_ads as (
         report_type='ad', 
         field_mapping={
                 'account_name': 'null',
-                'conversions_value': 'total_value'
+                'conversions_value': 'total_value',
+                
+                'video_plays': 'cast(null as int64)',
+                'video_views': 'cast(null as int64)'
             },
         relation=ref('reddit_ads__ad_report')
     ) }}
